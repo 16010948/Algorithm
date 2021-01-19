@@ -35,8 +35,8 @@ print("#1", solution(phone_book))
 
 phone_book = ["123", "456", "789"]
 # answer = True
-print("#1", solution(phone_book))
+print("#2", solution(phone_book))
 
 phone_book = ["12", "123", "1235", "567", "88"]
 # answer = False
-print("#1", solution(phone_book))
+print("#3", solution(phone_book))
