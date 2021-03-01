@@ -27,10 +27,7 @@ for card_num in card2:
     index_left = bisect_left(card1, 0, n - 1, card_num)
     index_right = bisect_right(card1, 0, n - 1, card_num)
     count = index_right - index_left
-    if card1[index_left] != card_num:
-        print(0, end=" ")
+    if card_num == card1[-1]:
+        print(count + 1, end=" ")
     else:
-        if index_right == n - 1:
-            print(count + 1, end=" ")
-        else:
-            print(count, end=" ")
+        print(count, end=" ")
