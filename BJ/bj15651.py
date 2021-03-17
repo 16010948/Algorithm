@@ -3,9 +3,9 @@ def dfs(n, m, result):
         print(' '.join([str(i) for i in result]))
         return
     for i in range(1, n + 1):
-            result.append(i)
-            dfs(n, m, result)
-            result.pop()
+        result.append(i)
+        dfs(n, m, result)
+        result.pop()
 
 n, m = map(int, input().split())
 dfs(n, m, [])
