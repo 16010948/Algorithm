@@ -50,18 +50,11 @@ def dfs(graph, v, visited):
 
 n, m, v = map(int, input().split())
 
-graph = {}
+graph = [[] for _ in range(n + 1)]
 for _ in range(m):
     v1, v2 = map(int, input().split())
-    if v1 in graph.keys():
-        graph[v1].append(v2)
-    else:
-        graph[v1] = [v2]
-
-    if v2 in graph.keys():
-        graph[v2].append(v1)
-    else:
-        graph[v2] = [v1]
+    graph[v1].append(v2)
+    graph[v2].append(v1)
 
 visited = [False] * (n + 1)
 dfs(graph, v, visited)
