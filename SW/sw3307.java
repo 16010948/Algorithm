@@ -2,6 +2,22 @@ import java.util.Scanner;
 
 class Solution
 {
+    static int bisecLeft(int[] array, int target, int n){
+    	int mid;
+        int start = 0;
+        int end = n;
+
+        while(start < end){
+            mid = (start + end) / 2;
+            if(target <= array[mid]){
+            	end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return end;
+    }
+
 	public static void main(String args[]) throws Exception
 	{
 
@@ -16,18 +32,18 @@ class Solution
                 array[i] = sc.nextInt();
             }
 
-            int[] dp = new int[n];
-            int max = 0;
+            int[] stack = new int[n];
+            int index = -1;
             for(int i = 0; i < n; i++){
-                dp[i] = 1;
-                for (int j = 0; j < i; j++) {
-                    if (array[i] > array[j]) {
-                    	dp[i] = Math.max(dp[i], dp[j] + 1);
-                    }
+                if(index < 0 || stack[index] < array[i]){
+                	stack[++index] = array[i];
+                } else {
+                	int position = bisecLeft(stack, array[i], index);
+                    stack[position] = array[i];
                 }
-                max = Math.max(max, dp[i]);
             }
-            System.out.println("#" + test_case + " " + max);
+
+            System.out.println("#" + test_case + " " + (index + 1));
 		}
 	}
 }
