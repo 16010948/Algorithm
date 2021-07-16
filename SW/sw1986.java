@@ -10,8 +10,7 @@ class Solution
 		for(int test_case = 1; test_case <= T; test_case++)
 		{
 			int n = sc.nextInt();
-            int evenSum = (n / 2) * (n / 2) + (n / 2);
-            int oddSum = (n % 2 == 1) ? ((n / 2) + 1) * ((n / 2) + 1) : (n / 2) * (n / 2);
+            int (n % 2 == 0) ? n / 2 * -1 : n / 2  + 1;
             System.out.println("#" + test_case + " " + (oddSum - evenSum));
 		}
 	}
