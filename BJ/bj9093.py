@@ -25,4 +25,4 @@ for _ in range(T):
         while not stack.is_empty():
             print(stack.pop(), end="")
         print(end=" ")
-    print(" ")
+    print()
