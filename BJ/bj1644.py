@@ -1,10 +1,12 @@
 n = int(input())
-prime = list(range(2, n + 1))
-for i in prime:
-    for j in range(i * 2, n + 1, i):
-        if j in prime and j % i == 0:
-            prime.remove(j)
+is_prime = [True] * (n + 1)
+for i in range(2, int(n ** 0.5) + 1):
+    if is_prime[i]:
+        for j in range(i * 2, n + 1, i):
+            if is_prime[j] and j % i == 0:
+                is_prime[j] = False
 
+prime = [i for i in range(2, n + 1) if is_prime[i]]
 end = 0
 count = 0
 interval_sum = 0
