@@ -1,11 +1,9 @@
-package com.ssafy.algo;
-
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class BJ2667 {
+public class Main {
 	static int N;
 	static char[][] map;
 	static List<Integer> sizes;
