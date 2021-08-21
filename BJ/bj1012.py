@@ -1,11 +1,18 @@
+import sys
+input = sys.stdin.readline
+
 deltas = [[-1, 0], [0, -1], [0, 1], [1, 0]]
-def dfs(r, c):
+def bfs(r, c):
+    queue = [[r, c]]
     cabbage[r][c] = 0
-    for delta in deltas:
-        nr = r + delta[0]
-        nc = c + delta[1]
-        if nr >= 0 and nr < n and nc >= 0 and nc < m and cabbage[nr][nc] == 1:
-            dfs(nr, nc)
+    while queue:
+        cur = queue.pop(0)
+        for delta in deltas:
+            nr = cur[0] + delta[0]
+            nc = cur[1] + delta[1]
+            if nr >= 0 and nr < n and nc >= 0 and nc < m and cabbage[nr][nc] == 1:
+                cabbage[nr][nc] = 0
+                queue.append([nr, nc])
 
 T = int(input())
 for test_case in range(T):
@@ -21,5 +28,5 @@ for test_case in range(T):
         for j in range(m):
             if cabbage[i][j] == 1:
                 answer += 1
-                dfs(i, j)
+                bfs(i, j)
     print(answer)
