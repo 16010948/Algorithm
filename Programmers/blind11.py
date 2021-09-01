@@ -59,7 +59,7 @@ def solution(orders, course):
             merge_sort(tmp)
             combination(0, tmp, "", c)
         answer += max_orders
-    print(answer)
+    merge_sort(answer)
 
     return answer
 
