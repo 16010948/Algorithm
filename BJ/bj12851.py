@@ -12,8 +12,6 @@ def bfs(start):
     dp[start] = 0
     while queue:
         cur = queue.popleft()
-        if cur == K:
-            answer += 1
 
         for delta in deltas:
             moved = (cur + delta[0]) * delta[1]
