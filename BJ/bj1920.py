@@ -1,21 +1,24 @@
-def quick_sort(array, start, end):
-    if start >= end:
+def merge_sort(array):
+    n = len(array)
+    if len(array) <= 1:
         return
-    pivot = start
-    left = start + 1
-    right = end
+    mid = n // 2
+    g1 = array[:mid]
+    g2 = array[mid:]
+    merge_sort(g1)
+    merge_sort(g2)
 
-    while left <= right:
-        while left <= end and array[pivot] >= array[left]:
-            left += 1
-        while right > start and array[pivot] <= array[right]:
-            right -= 1
-        if left >= right:
-            array[pivot], array[right] = array[right], array[pivot]
+    i1 = 0
+    i2 = 0
+    ia = 0
+    while i1 < len(g1) or i2 < len(g2):
+        if i2 >= len(g2) or (i1 < len(g1) and g1[i1] <g2[i2]):
+            array[ia] = g1[i1]
+            i1 += 1
         else:
-            array[left], array[right] = array[right], array[left]
-    quick_sort(array, start, right - 1)
-    quick_sort(array, right + 1, end)
+            array[ia] = g2[i2]
+            i2 += 1
+        ia += 1
 
 def binary_search(array, start, end, target):
     if start > end:
@@ -30,7 +33,8 @@ def binary_search(array, start, end, target):
 
 n = int(input())
 arr = list(map(int, input().split()))
-quick_sort(arr, 0, n - 1)
+merge_sort(arr)
+
 m = int(input())
 for x in map(int, input().split()):
     print(binary_search(arr, 0, n - 1, x))
