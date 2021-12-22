@@ -22,7 +22,7 @@ def merge_sort(array):
 
 def powerset(idx, s):
     if idx == n:
-        answer.append(s)
+        result.append(s)
         return
     powerset(idx + 1, s)
     powerset(idx + 1, s + nums[idx])
@@ -30,18 +30,16 @@ def powerset(idx, s):
 n = int(input())
 nums = list(map(int, input().split()))
 
-answer = []
+result = []
 powerset(0, 0)
 
 
-answer = list(set(answer))
-merge_sort(answer)
-is_exist = False
-for i in range(1, len(answer)):
-    if i != answer[i]:
-        print(i)
-        is_exist = True
+result = list(set(result))
+merge_sort(result)
+answer = result[-1] + 1
+for i in range(1, len(result)):
+    if i != result[i]:
+        answer = i
         break
 
-if not is_exist:
-    print(answer[-1] + 1)
+print(answer)
