@@ -26,3 +26,4 @@ def count_by_range(array, N, x):
 N, x = map(int, input().split())
 array = list(map(int, input().split()))
 print(count_by_range(array, N, x))
+
